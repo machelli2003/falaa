@@ -4,6 +4,7 @@ import { Minus, Plus, Trash2, ShoppingBag, MessageCircle } from "lucide-react";
 import { useCart } from "@/hooks/useCart";
 import { getProduct } from "@/data/products";
 import { formatGHS } from "@/lib/format";
+import { getImageWithFallback, handleImageError } from "@/lib/media";
 import { whatsappGeneral } from "@/lib/whatsapp";
 
 const DELIVERY_FEE = 30;
@@ -37,7 +38,7 @@ export default function Cart() {
             if (!product) return null;
             return (
               <div key={item.productId} className="flex gap-4 p-4 sm:p-5">
-                <img src={product.images[0]} alt={product.name} className="h-20 w-20 shrink-0 rounded-lg object-cover" />
+                <img src={getImageWithFallback(product.images[0])} alt={product.name} onError={handleImageError} className="h-20 w-20 shrink-0 rounded-lg object-cover" />
                 <div className="flex flex-1 flex-col justify-between">
                   <div className="flex justify-between gap-2">
                     <Link to={`/product/${product.id}`} className="font-display text-sm font-semibold hover:text-falaa sm:text-base">

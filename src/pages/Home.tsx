@@ -8,6 +8,7 @@ import ProductCard from "@/components/ProductCard";
 import SwapCalculator from "@/components/SwapCalculator";
 import TestimonialCard from "@/components/TestimonialCard";
 import { products, testimonials } from "@/data/products";
+import { getImageWithFallback, handleImageError } from "@/lib/media";
 import { whatsappGeneral } from "@/lib/whatsapp";
 
 const deals = products.filter((p) => p.isDeal).slice(0, 4);
@@ -76,8 +77,9 @@ export default function Home() {
           >
             <div className="relative aspect-[4/5] overflow-hidden rounded-[28px] bg-charcoal sm:aspect-[5/4]">
               <img
-                src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=1000&q=80"
+                src={getImageWithFallback("https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=1000&q=80")}
                 alt="Premium smartphone from the Falaa Deals catalogue"
+                onError={handleImageError}
                 className="h-full w-full object-cover"
               />
             </div>
@@ -269,9 +271,10 @@ export default function Home() {
           {socialGrid.map((seed, i) => (
             <div key={i} className="aspect-square overflow-hidden rounded-xl bg-mist/10">
               <img
-                src={`https://images.unsplash.com/${seed}?auto=format&fit=crop&w=400&q=70`}
+                src={getImageWithFallback(`https://images.unsplash.com/${seed}?auto=format&fit=crop&w=400&q=70`)}
                 alt="Website mockup placeholder"
                 loading="lazy"
+                onError={handleImageError}
                 className="h-full w-full object-cover"
               />
             </div>
@@ -299,10 +302,20 @@ export default function Home() {
       <section className="container-page py-16 sm:py-20">
         <h2 className="mb-8 font-display text-2xl font-bold sm:text-3xl">Come See Us.</h2>
         <div className="grid gap-5 lg:grid-cols-[1.1fr_1fr]">
-          <div className="flex aspect-[16/10] items-center justify-center rounded-2xl bg-mist/10 text-mist">
-            <div className="flex flex-col items-center gap-2 text-sm">
-              <Navigation size={22} />
-              Map placeholder — Accra, Ghana
+          <div className="overflow-hidden rounded-2xl border border-line/60 bg-gradient-to-br from-brand-purple/10 via-white to-brand-pink/10">
+            <div className="flex h-full min-h-[220px] flex-col justify-between bg-[radial-gradient(circle_at_center,_rgba(93,57,244,0.18),_transparent_30%),linear-gradient(180deg,_rgba(255,255,255,0.8),_rgba(255,255,255,0.95))] p-5">
+              <div className="flex items-center justify-between">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-purple/10 text-brand-purple">
+                  <Navigation size={20} />
+                </div>
+                <span className="rounded-full bg-white/80 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-brand-purple">Accra, Ghana</span>
+              </div>
+              <div className="rounded-2xl border border-white/70 bg-white/70 p-4 shadow-sm backdrop-blur-sm">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-mist">Store Location</p>
+                <p className="mt-2 font-display text-xl font-bold text-ink">Falaa Deals</p>
+                <p className="mt-1 text-sm text-mist">North Legon, Accra</p>
+                <div className="mt-4 h-20 rounded-xl bg-[radial-gradient(circle_at_top,_rgba(244,199,107,0.35),_transparent_25%),linear-gradient(135deg,_rgba(93,57,244,0.15),_rgba(236,79,125,0.18))]" />
+              </div>
             </div>
           </div>
           <div className="flex flex-col justify-center rounded-2xl border border-line/60 p-7">

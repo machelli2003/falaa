@@ -7,6 +7,7 @@ import Badge from "@/components/Badge";
 import WishlistButton from "@/components/WishlistButton";
 import ProductCard from "@/components/ProductCard";
 import { useCart } from "@/hooks/useCart";
+import { getImageWithFallback, handleImageError } from "@/lib/media";
 import { whatsappForProduct } from "@/lib/whatsapp";
 
 export default function ProductDetail() {
@@ -33,7 +34,7 @@ export default function ProductDetail() {
         {/* Gallery */}
         <div>
           <div className="relative aspect-square overflow-hidden rounded-2xl bg-mist/10">
-            <img src={product.images[activeImage]} alt={product.name} className="h-full w-full object-cover" />
+            <img src={getImageWithFallback(product.images[activeImage])} alt={product.name} onError={handleImageError} className="h-full w-full object-cover" />
           </div>
           {product.images.length > 1 && (
             <div className="mt-3 flex gap-3">
@@ -45,7 +46,7 @@ export default function ProductDetail() {
                     activeImage === i ? "border-falaa" : "border-transparent"
                   }`}
                 >
-                  <img src={img} alt="" className="h-full w-full object-cover" />
+                  <img src={getImageWithFallback(img)} alt="" onError={handleImageError} className="h-full w-full object-cover" />
                 </button>
               ))}
             </div>

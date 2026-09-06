@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { X, Search as SearchIcon } from "lucide-react";
 import { products } from "@/data/products";
 import { formatGHS } from "@/lib/format";
+import { getImageWithFallback, handleImageError } from "@/lib/media";
 
 const POPULAR = ["iPhone 15", "MacBook", "PS5", "AirPods", "Samsung"];
 
@@ -82,7 +83,7 @@ export default function SearchOverlay({ onClose }: { onClose: () => void }) {
               onClick={() => go(p.id)}
               className="flex w-full items-center gap-3 rounded-xl p-2 text-left hover:bg-mist/10"
             >
-              <img src={p.images[0]} alt="" className="h-12 w-12 rounded-lg object-cover" />
+              <img src={getImageWithFallback(p.images[0])} alt="" onError={handleImageError} className="h-12 w-12 rounded-lg object-cover" />
               <div className="min-w-0 flex-1">
                 <p className="truncate text-sm font-medium">{p.name}</p>
                 <p className="text-xs text-mist">{p.category}</p>

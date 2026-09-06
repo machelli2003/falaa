@@ -5,6 +5,7 @@ import { Search, Heart, ShoppingBag, Menu, X, MessageCircle } from "lucide-react
 import { useCart } from "@/hooks/useCart";
 import { useWishlist } from "@/hooks/useWishlist";
 import SearchOverlay from "./SearchOverlay";
+import BrandWordmark from "./BrandWordmark";
 import { whatsappGeneral } from "@/lib/whatsapp";
 
 const LINKS = [
@@ -44,9 +45,9 @@ export default function Navbar() {
         className="border-b border-white/10 bg-ink text-white"
       >
         <div className="container-page flex h-9 items-center justify-between gap-3 text-[10px] font-medium uppercase tracking-[0.18em] text-white/70">
-          <div className="flex items-center gap-4">
-            <span>Accra, Ghana</span>
-            <span className="hidden sm:inline">Mon–Sat · 9am–8pm</span>
+          <div className="flex items-center gap-3">
+            <span className="text-white">Accra, Ghana</span>
+            <span className="hidden text-white/75 sm:inline">Mon–Sat · 9am–8pm</span>
           </div>
           <button
             onClick={() => whatsappGeneral()}
@@ -67,9 +68,7 @@ export default function Navbar() {
       >
         <div className="container-page flex h-16 items-center justify-between sm:h-20">
           <Link to="/" className="flex items-center gap-2">
-            <span className="font-display text-xl font-bold tracking-tight sm:text-2xl">
-              FALAA<span className="text-falaa">.</span>
-            </span>
+            <BrandWordmark />
           </Link>
 
           <nav className="hidden items-center gap-1 lg:flex">
@@ -155,7 +154,7 @@ export default function Navbar() {
               className="absolute right-0 top-0 h-full w-[82%] max-w-sm bg-paper p-5 shadow-premium"
             >
               <div className="mb-6 flex items-center justify-between">
-                <span className="font-display text-lg font-bold">FALAA<span className="text-falaa">.</span></span>
+                <BrandWordmark />
                 <button onClick={() => setMenuOpen(false)} aria-label="Close menu" className="rounded-full p-2 hover:bg-ink/5">
                   <X size={20} />
                 </button>

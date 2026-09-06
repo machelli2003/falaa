@@ -6,18 +6,25 @@
   html {
     scroll-behavior: smooth;
   }
+
   body {
     @apply bg-paper text-ink font-body antialiased;
-    background-image: radial-gradient(circle at top, rgba(241, 91, 58, 0.08), transparent 28%), linear-gradient(180deg, #f7f3ee 0%, #f5f1ea 100%);
+    background-image:
+      radial-gradient(circle at top left, rgba(93, 57, 244, 0.12), transparent 24%),
+      radial-gradient(circle at top right, rgba(236, 79, 125, 0.1), transparent 26%),
+      linear-gradient(180deg, #f7f4f2 0%, #f5f0ee 100%);
   }
+
   h1, h2, h3, h4 {
     @apply font-display;
   }
+
   ::selection {
     @apply bg-falaa text-white;
   }
+
   :focus-visible {
-    outline: 2px solid #F15B3A;
+    outline: 2px solid #5D39F4;
     outline-offset: 2px;
   }
 }
@@ -26,6 +33,7 @@
   .container-page {
     @apply mx-auto w-full max-w-[1280px] px-5 sm:px-8;
   }
+
   .no-scrollbar::-webkit-scrollbar { display: none; }
   .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 }

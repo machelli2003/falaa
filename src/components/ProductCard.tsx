@@ -8,6 +8,7 @@ import Badge from "./Badge";
 import WishlistButton from "./WishlistButton";
 import { useCart } from "@/hooks/useCart";
 import { whatsappForProduct } from "@/lib/whatsapp";
+import { getImageWithFallback, handleImageError } from "@/lib/media";
 
 export default function ProductCard({ product }: { product: Product }) {
   const { addItem } = useCart();
@@ -24,9 +25,10 @@ export default function ProductCard({ product }: { product: Product }) {
     >
       <Link to={`/product/${product.id}`} className="relative block aspect-[4/5] overflow-hidden bg-mist/10">
         <motion.img
-          src={product.images[0]}
+          src={getImageWithFallback(product.images[0])}
           alt={product.name}
           loading="lazy"
+          onError={handleImageError}
           whileHover={{ scale: 1.06 }}
           transition={{ duration: 0.45, ease: "easeOut" }}
           className="h-full w-full object-cover"

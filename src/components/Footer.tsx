@@ -39,11 +39,16 @@ export default function Footer() {
     <footer className="mt-24 border-t border-line/60 bg-ink text-white">
       <div className="container-page grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-5">
         <div className="lg:col-span-2">
-          <span className="font-display text-2xl font-bold">
-            FALAA<span className="text-falaa">.</span>
-          </span>
+          <div className="flex items-center gap-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-brand-purple via-brand-purple to-brand-pink shadow-[0_8px_20px_rgba(93,57,244,0.35)]">
+              <span className="text-lg font-black text-white">F</span>
+            </div>
+            <span className="font-display text-2xl font-black tracking-[-0.05em] text-white">
+              Falaa<span className="text-falaa">.</span>
+            </span>
+          </div>
           <p className="mt-3 max-w-xs text-sm text-white/60">
-            Your next device. At a Falaaa deal.
+            Your next device. At a Falaa deal.
           </p>
           <div className="mt-5 flex gap-3">
             <a href="#" aria-label="Instagram" className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 hover:border-falaa hover:text-falaa">
